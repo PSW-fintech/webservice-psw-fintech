@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Projeto {
@@ -14,8 +15,9 @@ public class Projeto {
 	@GeneratedValue
 	protected int id_projeto;
 	
+	@ManyToOne
 	@Column
-	private int id_usuario_dono_do_projeto;
+	private Usuario usuario_dono_do_projeto;
 	
 	@Column
 	private String nome;
@@ -204,11 +206,11 @@ public class Projeto {
 		}
 		this.percentual_socio = percentual_socio;
 	}
-	public int getId_usuario_dono_do_projeto() {
-		return id_usuario_dono_do_projeto;
+	public Usuario getId_usuario_dono_do_projeto() {
+		return usuario_dono_do_projeto;
 	}
-	public void setId_usuario_dono_do_projeto(int id_usuario_dono_do_projeto) {
-		this.id_usuario_dono_do_projeto = id_usuario_dono_do_projeto;
+	public void setId_usuario_dono_do_projeto(Usuario usuario_dono_do_projeto) {
+		this.usuario_dono_do_projeto = usuario_dono_do_projeto;
 	}
 	
 	
@@ -217,8 +219,8 @@ public class Projeto {
 	public Projeto(Map<String,Object> projectData) throws Exception{
 		super();
 		try{
-			this.id_usuario_dono_do_projeto =(Integer) projectData.get("id_usuario_dono_do_projeto");
-			this.setId_usuario_dono_do_projeto(id_usuario_dono_do_projeto);
+			this.usuario_dono_do_projeto =(Usuario) projectData.get("usuario_dono_do_projeto");
+			this.setId_usuario_dono_do_projeto(usuario_dono_do_projeto);
 			this.nome =(String) projectData.get("nome");
 			this.setNome(nome);
 			this.descricao =(String) projectData.get("descricao");
