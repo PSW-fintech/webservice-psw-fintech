@@ -11,43 +11,40 @@ import org.springframework.web.bind.annotation.RestController;
 import com.auth0.jwt.JWTSigner;
 
 import repository.ProjetoRepository;
+import model.Projeto;
 
 @RestController
 @RequestMapping("/project")
 public class ProjetoCtrlr {
-	ProjetoRepository userRep = new ProjetoRepository();
+	ProjetoRepository projectRep = new ProjetoRepository();
 
 	@RequestMapping(value="/criar", method = RequestMethod.POST)
-	public String login(@RequestBody Map<String,Object> payload){
-		
-		String username = (String) payload.get("username");
-		String password = (String) payload.get("password");
-		
-		Projeto proj = null;
-		
+	public String criarProjeto(@RequestBody Map<String,Object> payload){
+						
+		Projeto proct = null;
+
 		try{
-			proj = userRep.recuperarUsuarioPorNomeESenha(username, password);
+			proct = new Projeto(payload);
 		}catch(Exception e){
-			return "{\"code\":500,\"type\":\"Ocorreu um erro interno no servidor\"}";
+			return "{\"code\":500,\"type\":\"Ocorreu um erro interno no servidor\",\"Message\":\"Nao foi possivel instanciar a pessoa juridica, verifique a passagem de argumentos\"}";
 		}
 		
-		if(proj != null){
-			//retorna token
-			String segredo = "secu"+user.getId_usuario()+"rity";
-			JWTSigner token = new JWTSigner(segredo);
-			HashMap<String,Object> reividicacoes = new HashMap<String,Object>();
-			reividicacoes.put("site", "fintech_faeterj.com");
-			reividicacoes.put("dono", user.getNome_completo());
-			return "{\"code\":200,\"token\":"+token.sign(reividicacoes)+"}";
-		}else{
-			//retorna bad authentication
-			return "{\"code\":403,\"type\":\"Credenciais erradas!\"}";
-		}
+		
+		if(proct != null){
+			try{
+				this.userRep.cadastrarNovoUsuario(proct);	
+			}catch(Exception e){
+				return "{\"code\":500,\"type\":\"Ocorreu um erro interno no servidor\",\"Message\":\"Nao foi possivel armazenar o usuario no banco\"}";
+			}
+			return "{\"code\":200,\"Message\":\"Usuario cadastrado com sucesso\"}";
+		}	
+		return "{\"code\":500,\"type\":\"Ocorreu um erro interno no servidor\",\"Message\":\"Nao foi possivel criar o usuario para armazenar no banco\"}";
+
 	}
 	
 
 	@RequestMapping(value="/todosOsProjetos",method= RequestMethod.POST )
-	public String cadastrar(@RequestBody Map<String,Object> payload){
+	public String todosOsProjetos(@RequestBody Map<String,Object> payload){
 		String user_type = (String) payload.get("user_type");
 		Usuario user = null;
 		if(user_type == null){
@@ -80,7 +77,7 @@ public class ProjetoCtrlr {
 	}
 	
 	@RequestMapping(value="/projetosDoUsuario",method= RequestMethod.POST )
-	public String cadastrar(@RequestBody Map<String,Object> payload){
+	public String projetosDoUsuario(@RequestBody Map<String,Object> payload){
 		String user_type = (String) payload.get("user_type");
 		Usuario user = null;
 		if(user_type == null){
