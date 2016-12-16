@@ -39,7 +39,9 @@ public class PessoaFisica extends Usuario{
 		super(userData);
 		try{ 
 			this.nome_da_mae = (String) userData.get("nome_da_mae");
+			this.setNome_da_mae(nome_da_mae);
 			this.data_de_nascimento = (String) userData.get("data_de_nascimento");
+			this.setData_de_nascimento(data_de_nascimento);
 		}catch(Exception e){
 			throw e;
 		}

@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Date;
+import java.util.Map;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -202,6 +203,59 @@ public class Projeto {
 			throw new Exception();
 		}
 		this.percentual_socio = percentual_socio;
+	}
+	public int getId_usuario_dono_do_projeto() {
+		return id_usuario_dono_do_projeto;
+	}
+	public void setId_usuario_dono_do_projeto(int id_usuario_dono_do_projeto) {
+		this.id_usuario_dono_do_projeto = id_usuario_dono_do_projeto;
+	}
+	
+	
+	public Projeto(){}
+	
+	public Projeto(Map<String,Object> projectData) throws Exception{
+		super();
+		try{
+			this.id_usuario_dono_do_projeto =(Integer) projectData.get("id_usuario_dono_do_projeto");
+			this.setId_usuario_dono_do_projeto(id_usuario_dono_do_projeto);
+			this.nome =(String) projectData.get("nome");
+			this.setNome(nome);
+			this.descricao =(String) projectData.get("descricao");
+			this.setDescricao(descricao);
+			this.url_video_apresentacao =(String) projectData.get("url_video_apresentacao");
+			this.setUrl_video_apresentacao(url_video_apresentacao);
+			this.setor_de_atuacao =(String) projectData.get("setor_de_atuacao");
+			this.setSetor_de_atuacao(setor_de_atuacao);
+			this.valor_total_investimento =(Double) projectData.get("valor_total_investimento");
+			this.setValor_total_investimento(valor_total_investimento);
+			this.prazo_levantamento =(Date) projectData.get("prazo_levantamento");
+			this.setPrazo_levantamento(prazo_levantamento);
+			this.faturamento_mensal_estimado =(Double) projectData.get("faturamento_mensal_estimado");
+			this.setFaturamento_mensal_estimado(faturamento_mensal_estimado);
+			this.lucro_mensal_estimado =(Double) projectData.get("lucro_mensal_estimado");
+			this.setLucro_mensal_estimado(lucro_mensal_estimado);
+			this.carencia_emprestimo =(Date) projectData.get("carencia_emprestimo");
+			this.setCarencia_emprestimo(carencia_emprestimo);
+			this.prazo_quitacao =(Date) projectData.get("prazo_quitacao");
+			this.setPrazo_quitacao(prazo_quitacao);
+			this.taxa_juros =(Double) projectData.get("taxa_juros");
+			this.setTaxa_juros(taxa_juros);
+			this.taxa_iof =(Double) projectData.get("taxa_iof");
+			this.setTaxa_iof(taxa_iof);
+			this.taxa_remuneracao_investidor =(Double) projectData.get("taxa_remuneracao_investidor");
+			this.setTaxa_remuneracao_investidor(taxa_remuneracao_investidor);
+			this.taxa_intermediacao =(Double) projectData.get("taxa_intermediacao");
+			this.setTaxa_intermediacao(taxa_intermediacao);
+			this.aceita_socio =(Boolean) projectData.get("aceita_socio");
+			this.setAceita_socio(aceita_socio);
+			this.percentual_ingresso =(Double) projectData.get("percentual_ingresso");
+			this.setPercentual_ingresso(percentual_ingresso);
+			this.percentual_socio =(Double) projectData.get("percentual_socio");
+			this.setPercentual_socio(percentual_socio);
+		}catch(Exception ex){
+			throw ex;
+		}
 	}
 	
 	
