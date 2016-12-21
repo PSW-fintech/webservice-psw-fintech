@@ -62,6 +62,13 @@ public class Pagamento {
 		return usuario_pagante;
 	}
 
+	public Pagamento() {
+		super();
+	}
+
+
+
+
 	public void setUsuario_pagante(Usuario usuario_pagante) throws Exception{
 		if(usuario_pagante == null){
 			throw new Exception();

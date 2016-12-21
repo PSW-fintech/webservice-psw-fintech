@@ -23,6 +23,11 @@ public class Endereco {
 	String cidade;
 	
 	
+	public Endereco() {
+		super();
+	}
+
+
 	public String jsonString(){
 		return "{\"" + "numero" + "\":" + "\"" + this.numero.toString() + "\"" + "," +
 				 "\"" + "rua" + "\":" + "\"" + this.rua.toString() + "\"" + "," +

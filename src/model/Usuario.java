@@ -18,6 +18,7 @@ public abstract class Usuario {
 	@OneToOne
 	@JoinColumn(name="id_endereco")
 	protected Endereco endereco;
+
 	@Column
 	protected String nome_completo;
 	@Column
