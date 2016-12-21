@@ -99,12 +99,12 @@ public class Investimento {
 	
 	
 	public String jsonString(){
-		return "{\"" + "nome" + "\":" + "\"" + this.nome.toString() + "\"" + "," +
-				 "\"" + "descricao" + "\":" + "\"" + this.descricao.toString() + "\"" + "," +
-				 "\"" + "setor_de_atuacao" + "\":" + "\"" + this.setor_de_atuacao.toString() + "\"" + "," +
-				 "\"" + "id_projeto" + "\":" + "\"" + this.id_projeto + "\"" + "," +
-				 "\"" + "url_video_apresentacao" + "\":" + "\"" + this.url_video_apresentacao.toString() + "\"" + "," +
-				 "\"" + "aceita_socio" + "\":" + "\"" + this.aceita_socio.toString() + "\"" + "}";
+		return "{\"" + "id_investimento" + "\":" + "\"" + this.id_investimento + "\"" + "," +
+				 "\"" + "valor_investimento" + "\":" + "\"" + this.valor_investimento.toString() + "\"" + "," +
+				 "\"" + "data_investimento" + "\":" + "\"" + this.data_investimento.toString() + "\"" + "," +
+				 "\"" + "quero_ser_socio" + "\":" + "\"" + this.quero_ser_socio + "\"" + "," +
+				 "\"" + "usuario_investidor.id_usuario" + "\":" + "\"" + this.usuario_investidor.id_usuario + "\"" + "," +
+				 "\"" + "projeto_investido.id_projeto" + "\":" + "\"" + this.projeto_investido.id_projeto + "\"" + "}";
 	}
 	
 }

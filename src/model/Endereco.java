@@ -24,11 +24,11 @@ public class Endereco {
 	
 	
 	public String jsonString(){
-		return "{\"" + "nome" + "\":" + "\"" + this.nome.toString() + "\"" + "," +
-				 "\"" + "descricao" + "\":" + "\"" + this.descricao.toString() + "\"" + "," +
-				 "\"" + "setor_de_atuacao" + "\":" + "\"" + this.setor_de_atuacao.toString() + "\"" + "," +
-				 "\"" + "id_projeto" + "\":" + "\"" + this.id_projeto + "\"" + "," +
-				 "\"" + "url_video_apresentacao" + "\":" + "\"" + this.url_video_apresentacao.toString() + "\"" + "," +
-				 "\"" + "aceita_socio" + "\":" + "\"" + this.aceita_socio.toString() + "\"" + "}";
+		return "{\"" + "numero" + "\":" + "\"" + this.numero.toString() + "\"" + "," +
+				 "\"" + "rua" + "\":" + "\"" + this.rua.toString() + "\"" + "," +
+				 "\"" + "bairro" + "\":" + "\"" + this.bairro.toString() + "\"" + "," +
+				 "\"" + "cidade" + "\":" + "\"" + this.cidade + "\"" + "," +
+				 "\"" + "cep" + "\":" + "\"" + this.cep.toString() + "\"" + "," +
+				 "\"" + "id_endereco" + "\":" + "\"" + this.id_endereco + "\"" + "}";
 	}
 }

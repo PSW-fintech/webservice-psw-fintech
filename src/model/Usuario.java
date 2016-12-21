@@ -152,12 +152,13 @@ public abstract class Usuario {
 	}
 	
 	public String jsonString(){
-		return "{\"" + "nome" + "\":" + "\"" + this.nome.toString() + "\"" + "," +
-				 "\"" + "descricao" + "\":" + "\"" + this.descricao.toString() + "\"" + "," +
-				 "\"" + "setor_de_atuacao" + "\":" + "\"" + this.setor_de_atuacao.toString() + "\"" + "," +
-				 "\"" + "id_projeto" + "\":" + "\"" + this.id_projeto + "\"" + "," +
-				 "\"" + "url_video_apresentacao" + "\":" + "\"" + this.url_video_apresentacao.toString() + "\"" + "," +
-				 "\"" + "aceita_socio" + "\":" + "\"" + this.aceita_socio.toString() + "\"" + "}";
+		return "{\"" + "nome_completo" + "\":" + "\"" + this.nome_completo.toString() + "\"" + "," +
+				 "\"" + "codigo_pessoa" + "\":" + "\"" + this.codigo_pessoa.toString() + "\"" + "," +
+				 "\"" + "telefone" + "\":" + "\"" + this.telefone.toString() + "\"" + "," +
+				 "\"" + "id_usuario" + "\":" + "\"" + this.id_usuario + "\"" + "," +
+				 "\"" + "nome_do_usuario" + "\":" + "\"" + this.nome_do_usuario.toString() + "\"" + "," +
+				 "\"" + "email" + "\":" + "\"" + this.email.toString() + "\"" + "," +
+				 "\"" + "foto_perfil" + "\":" + "\"" + this.foto_perfil.toString() + "\"" + "}";
 	}
 	
 }
