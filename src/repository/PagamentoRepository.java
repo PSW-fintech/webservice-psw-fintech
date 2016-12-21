@@ -18,7 +18,7 @@ public class PagamentoRepository  {
 		em = emf.createEntityManager();
 	}
 	
-	public void criarNovoInvestimetno(Pagamento pagamento) throws Exception{
+	public void criarNovoPagamento(Pagamento pagamento) throws Exception{
 		try{
 			em.getTransaction().begin();
 			em.merge(pagamento);
@@ -40,7 +40,7 @@ public class PagamentoRepository  {
 	}
 	
 	
-	public List<Pagamento> recuperarTodosOsProjetos() throws Exception{
+	public List<Pagamento> recuperarTodosOsPagamentos() throws Exception{
 		List<Pagamento> Pagamentos;
 		try{
 			em.getTransaction().begin();

@@ -19,17 +19,17 @@ public class PagamentoCtrlr {
 	@RequestMapping(value="/criar", method = RequestMethod.POST)
 	public String criarPagamento(@RequestBody Map<String,Object> payload){
 						
-		Pagamento proct = null;
+		Pagamento paymnt = null;
 
 		try{
-			proct = new Pagamento(payload);
+			paymnt = new Pagamento(payload);
 		}catch(Exception e){
 			return "{\"code\":500,\"type\":\"Ocorreu um erro interno no servidor\",\"Message\":\"Nao foi possivel instanciar a pessoa juridica, verifique a passagem de argumentos\"}";
 		}
 		
-		if(proct != null){
+		if(paymnt != null){
 			try{
-				this.paymentRep.criarNovoPagamento(proct);	
+				this.paymentRep.criarNovoPagamento(paymnt);	
 			}catch(Exception e){
 				return "{\"code\":500,\"type\":\"Ocorreu um erro interno no servidor\",\"Message\":\"Nao foi possivel armazenar o usuario no banco\"}";
 			}
@@ -47,8 +47,8 @@ public class PagamentoCtrlr {
 		try{
 			List<Pagamento> Pagamentos = this.paymentRep.recuperarTodosOsPagamentos();
 			String PagamentosJSON = "";
-			for(Pagamento proct : Pagamentos){
-				PagamentosJSON += proct.jsonString();
+			for(Pagamento paymnt : Pagamentos){
+				PagamentosJSON += paymnt.jsonString();
 			}
 			return "{\"response\":{\"code\":200,\"Message\":\"Pagamentos buscados com sucesso com sucesso\"},\"Pagamentos\":[" + PagamentosJSON + "]}";
 		}catch(Exception e){
