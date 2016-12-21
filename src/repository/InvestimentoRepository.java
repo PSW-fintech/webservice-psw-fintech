@@ -18,7 +18,7 @@ public class InvestimentoRepository  {
 		em = emf.createEntityManager();
 	}
 	
-	public void criarNovoInvestimetno(Investimento investimento) throws Exception{
+	public void criarNovoInvestimento(Investimento investimento) throws Exception{
 		try{
 			em.getTransaction().begin();
 			em.merge(investimento);
@@ -28,7 +28,7 @@ public class InvestimentoRepository  {
 		}
 	}
 	
-	public Investimento recuperarProjetoPorID(int idInvestimento) throws Exception{
+	public Investimento recuperarInvestimentoPorID(int idInvestimento) throws Exception{
 		try{
 			em.getTransaction().begin();
 			Investimento investimento = em.find(Investimento.class, idInvestimento);
