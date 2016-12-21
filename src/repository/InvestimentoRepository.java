@@ -40,7 +40,7 @@ public class InvestimentoRepository  {
 	}
 	
 	
-	public List<Investimento> recuperarTodosOsProjetos() throws Exception{
+	public List<Investimento> recuperarTodosOsInvestimentos() throws Exception{
 		List<Investimento> investimentos;
 		try{
 			em.getTransaction().begin();

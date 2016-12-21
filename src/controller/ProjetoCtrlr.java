@@ -48,7 +48,7 @@ public class ProjetoCtrlr {
 			List<Projeto> projetos = this.projectRep.recuperarTodosOsProjetos();
 			String projetosJSON = "";
 			for(Projeto proct : projetos){
-				projetosJSON += proct.jsonProject();
+				projetosJSON += proct.jsonString();
 			}
 			return "{\"response\":{\"code\":200,\"Message\":\"Projetos buscados com sucesso com sucesso\"},\"projetos\":[" + projetosJSON + "]}";
 		}catch(Exception e){

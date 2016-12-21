@@ -261,7 +261,7 @@ public class Projeto {
 		}
 	}
 	
-	public String jsonProject(){
+	public String jsonString(){
 		return "{\"" + "nome" + "\":" + "\"" + this.nome.toString() + "\"" + "," +
 				 "\"" + "descricao" + "\":" + "\"" + this.descricao.toString() + "\"" + "," +
 				 "\"" + "setor_de_atuacao" + "\":" + "\"" + this.setor_de_atuacao.toString() + "\"" + "," +

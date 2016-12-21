@@ -48,7 +48,7 @@ public class InvestimentoCtrlr {
 			List<Investimento> Investimentos = this.investmentRep.recuperarTodosOsInvestimentos();
 			String InvestimentosJSON = "";
 			for(Investimento proct : Investimentos){
-				InvestimentosJSON += proct.jsoninvestment();
+				InvestimentosJSON += proct.jsonString();
 			}
 			return "{\"response\":{\"code\":200,\"Message\":\"Investimentos buscados com sucesso com sucesso\"},\"Investimentos\":[" + InvestimentosJSON + "]}";
 		}catch(Exception e){

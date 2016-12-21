@@ -21,4 +21,14 @@ public class Endereco {
 	String bairro;
 	@Column
 	String cidade;
+	
+	
+	public String jsonString(){
+		return "{\"" + "nome" + "\":" + "\"" + this.nome.toString() + "\"" + "," +
+				 "\"" + "descricao" + "\":" + "\"" + this.descricao.toString() + "\"" + "," +
+				 "\"" + "setor_de_atuacao" + "\":" + "\"" + this.setor_de_atuacao.toString() + "\"" + "," +
+				 "\"" + "id_projeto" + "\":" + "\"" + this.id_projeto + "\"" + "," +
+				 "\"" + "url_video_apresentacao" + "\":" + "\"" + this.url_video_apresentacao.toString() + "\"" + "," +
+				 "\"" + "aceita_socio" + "\":" + "\"" + this.aceita_socio.toString() + "\"" + "}";
+	}
 }
