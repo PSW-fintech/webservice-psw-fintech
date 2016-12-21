@@ -5,15 +5,18 @@
 			<property name="hibernate.archive.autodetection" value="class"/>
 			
 			<!--   Conexão com o banco de dados   -->
-			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+			<property name="hibernate.connection.url" value="jdbc:mysql://xmysql2.lullybaby.com.br/lullybaby2"/>
+			<property name="hibernate.connection.user" value="lullybaby2"/>
+			<property name="hibernate.connection.password" value="1111"/>
+			<!--
 			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:8889/psw_fintech"/>
 			<property name="hibernate.connection.user" value="root"/>
 			<property name="hibernate.connection.password" value="123456"/>
-			<!--
 			  <property name="hibernate.hbm2ddl.auto" value="create" /> 
 			-->
-			<property name="hibernate.hbm2ddl.auto" value="update"/>
+			<property name="hibernate.hbm2ddl.auto" value="create-drop"/> <!--update-->
 			
 			<!--  Configuracoes de Debug  -->
 			<property name="hibernate.show_sql" value="true"/>

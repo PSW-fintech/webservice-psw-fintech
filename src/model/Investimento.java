@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -16,12 +17,12 @@ public class Investimento {
 	protected int id_investimento;
 
 	@ManyToOne
-	@Column
+	@JoinColumn(name="id_usuario")
 	private Usuario usuario_investidor;
 	
 
 	@ManyToOne
-	@Column
+	@JoinColumn(name="id_projeto")
 	private Projeto projeto_investido;
 	
 	@Column
