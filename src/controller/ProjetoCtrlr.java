@@ -24,20 +24,18 @@ public class ProjetoCtrlr {
 		try{
 			proct = new Projeto(payload);
 		}catch(Exception e){
-			return "{\"code\":500,\"type\":\"Ocorreu um erro interno no servidor\",\"Message\":\"Nao foi possivel instanciar a pessoa juridica, verifique a passagem de argumentos\"}";
-		}
-		
-		if(proct != null){
-			try{
-				this.projectRep.criarNovoProjeto(proct);	
-			}catch(Exception e){
-				return "{\"code\":500,\"type\":\"Ocorreu um erro interno no servidor\",\"Message\":\"Nao foi possivel armazenar o usuario no banco\"}";
+			return "{\"code\":500,\"type\":\"Erro na passagem de parametros\",\"Message\":\"Nao foi possivel instanciar o Projeto, verifique a passagem de argumentos\"}";
+		}finally{
+			if(proct != null){
+				try{
+					this.projectRep.criarNovoProjeto(proct);	
+				}catch(Exception e){
+					return "{\"code\":500,\"type\":\"Ocorreu um erro interno no servidor\",\"Message\":\"Nao foi possivel armazenar o Projeto no banco\"}";
+				}
+				return "{\"code\":200,\"Message\":\"Projeto cadastrado com sucesso\"}";
 			}
-			return "{\"code\":200,\"Message\":\"Usuario cadastrado com sucesso\"}";
-		}else{
-			return "{\"code\":500,\"type\":\"Ocorreu um erro interno no servidor\",\"Message\":\"Nao foi possivel criar o usuario para armazenar no banco\"}";
 		}
-
+		return "{\"code\":500,\"type\":\"Ocorreu um erro interno no servidor\",\"Message\":\"Nao foi possivel criar o Projeto para armazenar no banco\"}";
 	}
 	
 
@@ -52,7 +50,7 @@ public class ProjetoCtrlr {
 			}
 			return "{\"response\":{\"code\":200,\"Message\":\"Projetos buscados com sucesso com sucesso\"},\"projetos\":[" + projetosJSON + "]}";
 		}catch(Exception e){
-			return "{\"code\":500,\"type\":\"Ocorreu um erro interno no servidor\",\"Message\":\"Nao foi possivel armazenar o usuario no banco\"}";
+			return "{\"code\":500,\"type\":\"Ocorreu um erro interno no servidor\",\"Message\":\"O banco recusou a consulta aos Projetos\"}";
 		}
 		
 	}

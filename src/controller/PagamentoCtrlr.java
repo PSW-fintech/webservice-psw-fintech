@@ -46,7 +46,7 @@ public class PagamentoCtrlr {
 			List<Pagamento> Pagamentos = this.paymentRep.recuperarTodosOsPagamentos();
 			String PagamentosJSON = "";
 			for(Pagamento paymnt : Pagamentos){
-				PagamentosJSON += paymnt.jsonString();
+				PagamentosJSON += paymnt.jsonString() + ",";
 			}
 			return "{\"response\":{\"code\":200,\"Message\":\"Pagamentos buscados com sucesso com sucesso\"},\"Pagamentos\":[" + PagamentosJSON + "]}";
 		}catch(Exception e){
