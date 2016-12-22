@@ -33,5 +33,5 @@ dependencies {
 }
 
 bootRepackage {
-   mainClass = ''com.java.application.Main'
+   mainClass = 'com.java.application.Main'
 }
