@@ -25,19 +25,17 @@ public class PagamentoCtrlr {
 			paymnt = new Pagamento(payload);
 		}catch(Exception e){
 			return "{\"code\":500,\"type\":\"Ocorreu um erro interno no servidor\",\"Message\":\"Nao foi possivel instanciar a pessoa juridica, verifique a passagem de argumentos\"}";
+		}finally{
+			if(paymnt != null){
+				try{
+					this.paymentRep.criarNovoPagamento(paymnt);	
+				}catch(Exception e){
+					return "{\"code\":500,\"type\":\"Ocorreu um erro interno no servidor\",\"Message\":\"Nao foi possivel armazenar o pagamento no banco\"}";
+				}
+				return "{\"code\":200,\"Message\":\"Pagamento cadastrado com sucesso\"}";
+			}	
 		}
-		
-		if(paymnt != null){
-			try{
-				this.paymentRep.criarNovoPagamento(paymnt);	
-			}catch(Exception e){
-				return "{\"code\":500,\"type\":\"Ocorreu um erro interno no servidor\",\"Message\":\"Nao foi possivel armazenar o usuario no banco\"}";
-			}
-			return "{\"code\":200,\"Message\":\"Usuario cadastrado com sucesso\"}";
-		}else{
-			return "{\"code\":500,\"type\":\"Ocorreu um erro interno no servidor\",\"Message\":\"Nao foi possivel criar o usuario para armazenar no banco\"}";
-		}
-
+		return "{\"code\":500,\"type\":\"Ocorreu um erro interno no servidor\",\"Message\":\"Nao foi possivel instanciar a pessoa juridica, verifique a passagem de argumentos\"}";
 	}
 	
 
@@ -52,7 +50,7 @@ public class PagamentoCtrlr {
 			}
 			return "{\"response\":{\"code\":200,\"Message\":\"Pagamentos buscados com sucesso com sucesso\"},\"Pagamentos\":[" + PagamentosJSON + "]}";
 		}catch(Exception e){
-			return "{\"code\":500,\"type\":\"Ocorreu um erro interno no servidor\",\"Message\":\"Nao foi possivel armazenar o usuario no banco\"}";
+			return "{\"code\":500,\"type\":\"Ocorreu um erro interno no servidor\",\"Message\":\"O banco recusou a consulta aos pagamentos\"}";
 		}
 		
 	}
