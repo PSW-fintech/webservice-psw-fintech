@@ -21,9 +21,15 @@ public class ProjetoRepository {
 	
 	public void criarNovoProjeto(Projeto project) throws Exception{
 		try{
-			em.getTransaction().begin();
+
+			if( !em.getTransaction().isActive() ){
+				em.getTransaction().begin();
+			}
 			em.merge(project);
-			em.getTransaction().commit();
+
+			if( em.getTransaction().isActive() ){
+				em.getTransaction().commit();
+			}
 		}catch(Exception e){
 			throw e;
 		}
@@ -31,9 +37,15 @@ public class ProjetoRepository {
 	
 	public Projeto recuperarProjetoPorID(int idProjeto) throws Exception{
 		try{
-			em.getTransaction().begin();
+
+			if( !em.getTransaction().isActive() ){
+				em.getTransaction().begin();
+			}
 			Projeto project = em.find(Projeto.class, idProjeto);
-			em.getTransaction().commit();
+
+			if( em.getTransaction().isActive() ){
+				em.getTransaction().commit();
+			}
 			return project;		
 		}catch(Exception e){
 			throw e;
@@ -44,10 +56,16 @@ public class ProjetoRepository {
 	public List<Projeto> recuperarTodosOsProjetos() throws Exception{
 		List<Projeto> projetos;
 		try{
-			em.getTransaction().begin();
+
+			if( !em.getTransaction().isActive() ){
+				em.getTransaction().begin();
+			}
 			projetos = (List<Projeto>) em.createQuery("SELECT project FROM Projeto project")
 					.getResultList();
-			em.getTransaction().commit();
+
+			if( em.getTransaction().isActive() ){
+				em.getTransaction().commit();
+			}
 		}catch(Exception e){
 			throw e;
 		}

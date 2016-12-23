@@ -22,9 +22,15 @@ public class UsuarioRepository {
 	
 	public void cadastrarNovoUsuario(Usuario newUser) throws Exception{
 		try{
-			em.getTransaction().begin();
+
+			if( !em.getTransaction().isActive() ){
+				em.getTransaction().begin();
+			}
 			em.merge(newUser);
-			em.getTransaction().commit();
+
+			if( em.getTransaction().isActive() ){
+				em.getTransaction().commit();
+			}
 		}catch(Exception e){
 			throw e;
 		}
@@ -32,9 +38,15 @@ public class UsuarioRepository {
 	
 	public Usuario recuperarUsuarioPorID(int idUsuario) throws Exception{
 		try{
-			em.getTransaction().begin();
+
+			if( !em.getTransaction().isActive() ){
+				em.getTransaction().begin();
+			}
 			Usuario user = em.find(Usuario.class, idUsuario);
-			em.getTransaction().commit();
+
+			if( em.getTransaction().isActive() ){
+				em.getTransaction().commit();
+			}
 			return user;		
 		}catch(Exception e){
 			throw e;
@@ -44,12 +56,18 @@ public class UsuarioRepository {
 	public Usuario recuperarUsuarioPorNomeESenha(String nome, String senha) throws Exception{
 		List<Usuario> usuarios;
 		try{
-			em.getTransaction().begin();
+
+			if( !em.getTransaction().isActive() ){
+				em.getTransaction().begin();
+			}
 			usuarios = (List<Usuario>) em.createQuery("SELECT user FROM Usuario user WHERE user.nome_do_usuario LIKE :userName AND user.senha_para_acesso LIKE :userPass")
 					.setParameter("userName", nome)
 					.setParameter("userPass", senha)
 					.getResultList();
-			em.getTransaction().commit();
+
+			if( em.getTransaction().isActive() ){
+				em.getTransaction().commit();
+			}
 		}catch(Exception e){
 			throw e;
 		}

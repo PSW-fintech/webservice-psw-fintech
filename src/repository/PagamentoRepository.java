@@ -20,9 +20,15 @@ public class PagamentoRepository  {
 	
 	public void criarNovoPagamento(Pagamento pagamento) throws Exception{
 		try{
+			if( !em.getTransaction().isActive() ){
+				em.getTransaction().begin();
+			}
 			em.getTransaction().begin();
 			em.merge(pagamento);
-			em.getTransaction().commit();
+
+			if( em.getTransaction().isActive() ){
+				em.getTransaction().commit();
+			}
 		}catch(Exception e){
 			throw e;
 		}
@@ -30,9 +36,14 @@ public class PagamentoRepository  {
 	
 	public Pagamento recuperarProjetoPorID(int idPagamento) throws Exception{
 		try{
-			em.getTransaction().begin();
+			if( !em.getTransaction().isActive() ){
+				em.getTransaction().begin();
+			}
 			Pagamento pagamento = em.find(Pagamento.class, idPagamento);
-			em.getTransaction().commit();
+
+			if( em.getTransaction().isActive() ){
+				em.getTransaction().commit();
+			}
 			return pagamento;		
 		}catch(Exception e){
 			throw e;
@@ -43,10 +54,14 @@ public class PagamentoRepository  {
 	public List<Pagamento> recuperarTodosOsPagamentos() throws Exception{
 		List<Pagamento> Pagamentos;
 		try{
-			em.getTransaction().begin();
+			if( !em.getTransaction().isActive() ){
+				em.getTransaction().begin();
+			}
 			Pagamentos = (List<Pagamento>) em.createQuery("SELECT pagamentos FROM Pagamento pagamentos")
 					.getResultList();
-			em.getTransaction().commit();
+			if( em.getTransaction().isActive() ){
+				em.getTransaction().commit();
+			}
 		}catch(Exception e){
 			throw e;
 		}

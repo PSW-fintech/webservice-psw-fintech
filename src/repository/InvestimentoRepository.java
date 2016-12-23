@@ -20,9 +20,15 @@ public class InvestimentoRepository  {
 	
 	public void criarNovoInvestimento(Investimento investimento) throws Exception{
 		try{
-			em.getTransaction().begin();
+
+			if( !em.getTransaction().isActive() ){
+				em.getTransaction().begin();
+			}
 			em.merge(investimento);
-			em.getTransaction().commit();
+
+			if( em.getTransaction().isActive() ){
+				em.getTransaction().commit();
+			}
 		}catch(Exception e){
 			throw e;
 		}
@@ -30,9 +36,15 @@ public class InvestimentoRepository  {
 	
 	public Investimento recuperarInvestimentoPorID(int idInvestimento) throws Exception{
 		try{
-			em.getTransaction().begin();
+
+			if( !em.getTransaction().isActive() ){
+				em.getTransaction().begin();
+			}
 			Investimento investimento = em.find(Investimento.class, idInvestimento);
-			em.getTransaction().commit();
+
+			if( em.getTransaction().isActive() ){
+				em.getTransaction().commit();
+			}
 			return investimento;		
 		}catch(Exception e){
 			throw e;
@@ -43,10 +55,16 @@ public class InvestimentoRepository  {
 	public List<Investimento> recuperarTodosOsInvestimentos() throws Exception{
 		List<Investimento> investimentos;
 		try{
-			em.getTransaction().begin();
+
+			if( !em.getTransaction().isActive() ){
+				em.getTransaction().begin();
+			}
 			investimentos = (List<Investimento>) em.createQuery("SELECT investimentos FROM Investimento investimentos")
 					.getResultList();
-			em.getTransaction().commit();
+
+			if( em.getTransaction().isActive() ){
+				em.getTransaction().commit();
+			}
 		}catch(Exception e){
 			throw e;
 		}
